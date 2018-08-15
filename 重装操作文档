@@ -68,5 +68,21 @@ dwc_otg.lpm_enable=0  console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4  elevator
      完成以上步骤后，我们现在可以通过"ttyAMA0"与外部设备进行连接了。
      测试串口
      使用minicom
-     
+ 10.程序自启动
+
+   在 /home/pi/.config 下找到名为autostart的文件夹，如果没有就新创建一个。在该文件夹下创建一个xxx.desktop文件，文件名自拟，后缀必须是desktop，文件内容如下：
+
+[Desktop Entry]
+Name=test
+Comment=Python Program
+Exec=python /home/pi/test.py
+Icon=/home/pi/python_games/4row_black.png
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Application;Development;
+StartupNotify=true
+Name、Comment、Icon 可以自定，表示启动项的名称、备注和图标。Exec 表示调用的指令，和在终端输入运行脚本的指令格式一致。如果你的树莓派没有png图标，那么就和我一样，找到python_game文件夹，那里有几个简单的图标可以现成拿来使用。
+sudo reboot 
+重启， test.py 就开机自动运行了。
     
